@@ -1,0 +1,16 @@
+{
+  "name": "kindle-server",
+  "version": "0.0.1",
+  "description": "kindle server to create screenshots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "kindle",
+    "server",
+    "weather"
+  ],
+  "author": "fada",
+  "license": "MIT"
+}

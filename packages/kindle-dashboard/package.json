@@ -1,0 +1,9 @@
+{
+  "name": "kindle-dashboard",
+  "version": "0.0.1",
+  "description": "kindle dashboard with react",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "fada"
+}
