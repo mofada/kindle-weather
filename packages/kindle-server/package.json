@@ -4,7 +4,7 @@
   "description": "kindle server to create screenshots",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node index.js"
   },
   "keywords": [
     "kindle",
@@ -12,5 +12,12 @@
     "weather"
   ],
   "author": "fada",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^13.1.0",
+    "koa": "^2.15.3",
+    "puppeteer": "^23.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
 }
