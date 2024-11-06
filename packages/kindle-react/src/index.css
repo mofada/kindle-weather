@@ -1,3 +1,5 @@
+@import "qweather-icons/font/qweather-icons.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
