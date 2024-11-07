@@ -1,13 +1,8 @@
-// 定义请求方法类型
-type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
-
-// 定义请求函数的选项类型
-interface RequestOptions {
-	headers?: Record<string, string>; // 请求头
-	credentials?: RequestCredentials; // 可选的 credentials 设置
-	mode?: RequestMode;               // 可选的请求模式（如 'cors', 'no-cors', 'same-origin'）
-	cache?: RequestCache;             // 可选的缓存模式
-}
+const API_KEY = '60d8869fe45c4d778662291dd21ecc38';
+/**
+ * (必选)需要查询地区的LocationID或以英文逗号分隔的经度,纬度坐标（十进制，最多支持小数点后两位），LocationID可通过GeoAPI获取。例如 location=101010100 或 location=116.41,39.92
+ */
+const LOCATION = '101210114';
 
 /**
  * 封装的通用请求函数
@@ -19,36 +14,16 @@ interface RequestOptions {
  */
 export async function request<T>(
 	url: string,
-	method: RequestMethod = 'GET',
-	params: Record<string, any> = {},
-	options: RequestOptions = {}
 ): Promise<T> {
-	// 默认 headers
-	const defaultHeaders: Record<string, string> = {
-		'Content-Type': 'application/json',
-		...options.headers,
-	};
-
-	// GET 请求处理
-	if (method === 'GET' && params) {
-		const queryString = new URLSearchParams(params).toString();
-		url = queryString ? `${url}?${queryString}` : url;
+	const params = {
+		key: API_KEY,
+		location: LOCATION,
 	}
 
-	// 构造 fetch 配置项
-	const fetchOptions: RequestInit = {
-		method,
-		headers: defaultHeaders,
-		...options,
-	};
-
-	// 如果是非 GET 请求，添加请求体
-	if (method !== 'GET' && params) {
-		fetchOptions.body = JSON.stringify(params);
-	}
+	const queryString = new URLSearchParams(params).toString();
 
 	try {
-		const response = await fetch(url, fetchOptions);
+		const response = await fetch(`${url}?${queryString}`);
 
 		if (!response.ok) {
 			throw new Error(`请求失败：${response.statusText}`);

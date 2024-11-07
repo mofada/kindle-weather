@@ -1,25 +1,44 @@
-import { WeatherNow } from './components/WeatherNow';
-import { FutureWeatherCard } from './components/FutureCard.tsx';
-import { Footer } from './components/Footer.tsx';
+import {WeatherNow} from './components/WeatherNow';
+import {FutureWeatherCard} from './components/FutureCard.tsx';
+import {Footer} from './components/Footer.tsx';
 import './App.css';
+import {useEffect, useState} from "react";
+import weatherApi from "./api/weather.ts";
+import {INow} from "./types/now.ts";
+import {IHourlyForecast} from "./types/future.ts";
 
 function App() {
+	const [now, setNow] = useState<INow>({} as INow)
+	const [future, setFuture] = useState<IHourlyForecast[]>([])
+
+	useEffect(() => {
+		weatherApi.now()
+			.then(data => {
+				setNow(data.now)
+			})
+
+		weatherApi.future()
+			.then(data => {
+				setFuture(data.hourly.slice(0, 5))
+			})
+	}, [])
+
 	return (
 		<main className="flex flex-col w-screen h-screen overflow-hidden">
 			{/* 当前天气信息 */}
-			<WeatherNow />
+			<WeatherNow now={now}/>
 
 			{/* 未来天气预报区域 */}
 			<section className="flex-[2] grid grid-cols-5 border-b border-b-black">
-				<FutureWeatherCard />
-				<FutureWeatherCard />
-				<FutureWeatherCard />
-				<FutureWeatherCard />
-				<FutureWeatherCard />
+				{
+					future.map((hourly, index) => {
+						return <FutureWeatherCard key={index} hourly={hourly}/>
+					})
+				}
 			</section>
 
 			{/* 页脚 */}
-			<Footer />
+			<Footer/>
 		</main>
 	);
 }
