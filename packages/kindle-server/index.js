@@ -1,19 +1,24 @@
 const Koa = require('koa');
+const Router = require('@koa/router');
+const serve = require('koa-static');
+const proxy = require('koa-proxies');
 const fs = require('fs');
 const path = require('path');
-const { captureScreenshot, convertImage } = require('./util.js');
+const {captureScreenshot, convertImage} = require('./util.js');
 
-const app = new Koa();
 const PORT = process.env.PORT || 3000;
 const SCREENSHOT_PATH = path.join(__dirname, 'screenshot.png');
+const TARGET_URL = `http://localhost:${PORT}`;
 
-// 处理请求
-app.use(async (ctx) => {
-	const targetUrl = 'https://www.qweather.com/weather/binjiang-101210114.html';
+const app = new Koa();
+const router = new Router();
 
+
+// 截图
+router.get('/screenshot', async (ctx) => {
 	try {
 		// 截图并保存
-		await captureScreenshot(targetUrl, SCREENSHOT_PATH);
+		await captureScreenshot(TARGET_URL, SCREENSHOT_PATH);
 
 		// 转换图片格式
 		await convertImage(SCREENSHOT_PATH);
@@ -29,8 +34,36 @@ app.use(async (ctx) => {
 		ctx.body = {message: 'Internal Server Error', error: error.message};
 		console.error('Error processing request:', error);
 	}
-});
+})
+
+// 天气
+// 代理 /api/weather/now 到外部 API
+app.use(
+	proxy('/api/weather/now', {
+		target: 'https://devapi.qweather.com/v7/weather/now',
+		changeOrigin: true,
+		rewrite: path => path.replace(/^\/api\/weather\/now/, ''),
+		logs: true,
+	})
+);
+
+// 代理 /api/weather/24h 到外部 API
+app.use(
+	proxy('/api/weather/24h', {
+		target: 'https://devapi.qweather.com/v7/weather/24h',
+		changeOrigin: true,
+		rewrite: path => path.replace(/^\/api\/weather\/24h/, ''),
+		logs: true,
+	})
+);
+
+// 静态文件服务
+app.use(serve(path.join(__dirname, 'weather')));
+// 路由
+app.use(router.routes());
+app.use(router.allowedMethods());
+
 
 app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+	console.log('服务器已启动，访问 http://localhost:3000');
 });

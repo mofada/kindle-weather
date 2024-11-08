@@ -12,6 +12,11 @@ async function captureScreenshot(url, filename) {
 
 	// 设置视口大小
 	await page.setViewport({width: 600, height: 800});
+	// 旋转90度
+	await page.evaluate(() => {
+		document.body.style.transform = 'rotate(90deg)';
+	});
+
 
 	// 打开网页并截屏
 	await page.goto(url);
