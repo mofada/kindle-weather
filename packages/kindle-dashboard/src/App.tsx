@@ -24,7 +24,7 @@ function App() {
 	}, [])
 
 	return (
-		<main className="flex flex-col w-screen h-screen overflow-hidden">
+		<main className="flex flex-col overflow-hidden rotate-90 origin-bottom-left w-[800px] h-[600px] absolute -top-[600px]">
 			{/* 当前天气信息 */}
 			<WeatherNow now={now}/>
 

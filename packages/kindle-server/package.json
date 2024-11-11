@@ -19,7 +19,7 @@
     "koa-http-proxy": "^0.0.1",
     "koa-proxies": "^0.12.4",
     "koa-static": "^5.0.0",
-    "puppeteer": "^23.7.0",
+    "puppeteer": "^5.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }

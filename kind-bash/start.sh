@@ -12,7 +12,7 @@ if [ "$batteryLevel" -lt 10 ]; then
 fi
 
 # 下载截图图像
-if ! curl -s -o screenshot.png http://118.25.193.183:3000/; then
+if ! curl https://kindle.mofada.cn/screenshot -o screenshot.png; then
   echo "下载截图失败"
   exit 1
 fi

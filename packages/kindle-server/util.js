@@ -20,6 +20,7 @@ async function captureScreenshot(url, filename) {
 
 	// 打开网页并截屏
 	await page.goto(url);
+	await page.waitForTimeout(1500)
 	await page.screenshot({path: filename});
 
 	await browser.close();
