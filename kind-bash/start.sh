@@ -24,5 +24,7 @@ eips -g fill.png
 # 清屏
 eips -c
 
+eips -c
+
 # 显示截图图像
 eips -g screenshot.png
