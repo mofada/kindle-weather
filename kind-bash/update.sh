@@ -1,5 +1,5 @@
 #!/bin/bash
-# 每五分钟运行一次，接口请求次数有限
+# 每分钟运行一次，更新屏幕，防止误触
 
 # 获取电池电量
 batteryLevel=$(gasgauge-info -s)
@@ -10,12 +10,6 @@ if [ "$batteryLevel" -lt 10 ]; then
   eips -c  # 清屏
   eips -g low-battery.png  # 显示低电量图像
   exit 0
-fi
-
-# 下载截图图像
-if ! curl https://kindle.mofada.cn/screenshot -o screenshot.png; then
-  echo "下载截图失败"
-  exit 1
 fi
 
 # 使用黑色图像填充屏幕
