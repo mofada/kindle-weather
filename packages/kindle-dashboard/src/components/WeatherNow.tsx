@@ -8,7 +8,7 @@ import {formatTime} from "../utils/util.ts";
  */
 export function WeatherNow({now}: { now: INow }) {
 	return (
-		<header className="min-h-[300px] flex-[3] flex border-b-4 border-b-black"
+		<header className="min-h-0 flex-[3] flex border-b-4 border-b-black"
 		        aria-label="当前天气信息">
 			{/* 左侧时间显示 */}
 			<div className="flex flex-col p-4">

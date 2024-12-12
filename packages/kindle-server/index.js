@@ -17,8 +17,7 @@ const router = new Router();
  * 天气信息
  * @type {{sunrise: string, sunset: string, date:string}}
  */
-const sun = {}
-
+const sunDataCache = {}
 
 // 截图
 router.get('/screenshot', async (ctx) => {
@@ -63,10 +62,47 @@ app.use(
 	})
 );
 
-router.get('/api/sun', async (ctx) => {
-	console.log(ctx);
+router.get('/api/today', async (ctx) => {
+	// 获取日期 YYYY-MM-DD
+	const todayDate = new Date().toISOString().split('T')[0];
+	const {key, location} = ctx.request.query;
 
-	ctx.body = sun
+	// 如果没有缓存或者缓存的日期不是今天，则重新请求
+	if (!sunDataCache.date || sunDataCache.date !== todayDate) {
+		// 参数校验
+		if (!key || !location) {
+			ctx.body = {message: '参数 key 和 location 必填', code: 400};
+			return;
+		}
+
+		try {
+			// 发起网络请求获取数据
+			const response = await fetch(
+				`https://devapi.qweather.com//v7/weather/3d?location=${location}&key=${key}&lang=zh`
+			);
+
+			if (!response.ok) {
+				ctx.body = {message: '请求天气数据失败', code: response.status};
+				return;
+			}
+
+			const data = await response.json();
+
+			const {daily, ...rest} = data;
+
+			// 更新缓存
+			Object.assign(sunDataCache, {today: daily?.[0]}, rest, {date: todayDate});
+		} catch (error) {
+			ctx.body = {message: `请求天气服务失败: ${error.message}`, code: 500};
+			return;
+		}
+	}
+
+	// 返回缓存数据
+	ctx.body = {
+		...sunDataCache,
+		code: 200,
+	};
 })
 
 // 静态文件服务

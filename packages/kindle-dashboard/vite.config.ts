@@ -8,8 +8,7 @@ export default defineConfig({
 		proxy: {
 			'/api/': {
 				changeOrigin: true,
-				target: 'https://devapi.qweather.com/v7',
-				rewrite: (path) => path.replace(/^\/api/, '')
+				target: 'http://localhost:3000',
 			}
 		}
 	},

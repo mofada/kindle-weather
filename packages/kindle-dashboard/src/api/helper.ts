@@ -20,6 +20,11 @@ export async function request<T>(
 		location: LOCATION,
 	}
 
+	const queryParams = new URLSearchParams(params)
+	if (queryParams.has('key')) params.key = queryParams.get('key') as string
+	if (queryParams.has('location')) params.location = queryParams.get('location') as string
+
+	// 将参数拼接到 URL 中
 	const queryString = new URLSearchParams(params).toString();
 
 	try {
