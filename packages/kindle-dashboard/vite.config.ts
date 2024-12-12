@@ -12,5 +12,14 @@ export default defineConfig({
 				rewrite: (path) => path.replace(/^\/api/, '')
 			}
 		}
+	},
+	build: {
+		rollupOptions: {
+			output: {
+				entryFileNames: '[name].js',
+				chunkFileNames: '[name].js',
+				assetFileNames: 'assets/[name].[ext]',
+			},
+		}
 	}
 })

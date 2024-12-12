@@ -13,6 +13,12 @@ const TARGET_URL = `http://localhost:${PORT}`;
 const app = new Koa();
 const router = new Router();
 
+/**
+ * 天气信息
+ * @type {{sunrise: string, sunset: string, date:string}}
+ */
+const sun = {}
+
 
 // 截图
 router.get('/screenshot', async (ctx) => {
@@ -56,6 +62,12 @@ app.use(
 		logs: true,
 	})
 );
+
+router.get('/api/sun', async (ctx) => {
+	console.log(ctx);
+
+	ctx.body = sun
+})
 
 // 静态文件服务
 app.use(serve(path.join(__dirname, 'weather')));
