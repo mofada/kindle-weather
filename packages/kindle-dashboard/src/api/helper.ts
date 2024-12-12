@@ -1,4 +1,8 @@
-const API_KEY = '60d8869fe45c4d778662291dd21ecc38';
+/**
+ * 请在此处填写你的 API Key 和 LocationID
+ */
+const API_KEY = '';
+
 /**
  * (必选)需要查询地区的LocationID或以英文逗号分隔的经度,纬度坐标（十进制，最多支持小数点后两位），LocationID可通过GeoAPI获取。例如 location=101010100 或 location=116.41,39.92
  */
@@ -20,7 +24,7 @@ export async function request<T>(
 		location: LOCATION,
 	}
 
-	const queryParams = new URLSearchParams(params)
+	const queryParams = new URLSearchParams(location.search)
 	if (queryParams.has('key')) params.key = queryParams.get('key') as string
 	if (queryParams.has('location')) params.location = queryParams.get('location') as string
 

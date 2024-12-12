@@ -7,6 +7,10 @@ import {formatTime} from "../utils/util.ts";
  * @constructor
  */
 export function WeatherNow({now}: { now: INow }) {
+	// 从 URL 中获取城市名称
+	const params = new URLSearchParams(location.search);
+	const cityName = params.get('city') || '杭州市';
+
 	return (
 		<header className="min-h-0 flex-[3] flex border-b-4 border-b-black"
 		        aria-label="当前天气信息">
@@ -22,7 +26,7 @@ export function WeatherNow({now}: { now: INow }) {
 
 			{/* 右侧天气信息 */}
 			<div className="flex flex-col p-4 ml-auto items-end justify-between">
-				<h1 className="text-[42px]" aria-label="城市名称">杭州市</h1>
+				<h1 className="text-[42px]" aria-label="城市名称">{cityName}</h1>
 
 				{/* 温度显示 */}
 				<div className="text-[100px]">

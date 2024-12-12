@@ -21,9 +21,14 @@ const sunDataCache = {}
 
 // 截图
 router.get('/screenshot', async (ctx) => {
+	const {key, location, city} = ctx.request.query;
+	const queryString = new URLSearchParams({key, location, city}).toString();
+
 	try {
+		// 拼接 URL
+		const targetUrl = `${TARGET_URL}?${queryString}`;
 		// 截图并保存
-		await captureScreenshot(TARGET_URL, SCREENSHOT_PATH);
+		await captureScreenshot(targetUrl, SCREENSHOT_PATH);
 
 		// 转换图片格式
 		await convertImage(SCREENSHOT_PATH);
