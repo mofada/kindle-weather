@@ -10,8 +10,7 @@
 
 ![screenshot_kindle](screenshot/screenshot_kindle.png)
 
-在线预览: [https://kindle.mofada.cn?key=api_key&location=location&city=city](https://kindle.mofada.cn?
-key=api_key&location=location&city=city)
+在线预览: [https://kindle.mofada.cn?key=api_key&location=location&city=city](https://kindle.mofada.cn?key=api_key&location=location&city=city)
 
 在线截图: [https://kindle.mofada.cn/screenshot?key=api_key&location=location&city=city](https://kindle.mofada.cn/screenshot?key=api_key&location=location&city=city)
 
