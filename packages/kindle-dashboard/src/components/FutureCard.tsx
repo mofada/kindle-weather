@@ -15,9 +15,8 @@ export function FutureWeatherCard({hourly}: { hourly: IHourlyForecast }) {
 			<i className={`qi-${hourly.icon} text-[80px]`} aria-label="天气图标"/>
 
 			{/* 温度信息 */}
-			<p className="font-bold text-[30px]">
-				<span>{hourly.temp}</span>
-				<span className="text-[20px]">℃</span>
+			<p className="font-bold text-4xl font-cabin-sketch ">
+				{hourly.temp}°
 			</p>
 
 			{/* 天气描述 */}
