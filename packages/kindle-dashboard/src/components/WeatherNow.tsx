@@ -20,7 +20,7 @@ export function WeatherNow({now}: { now: INow }) {
 				   aria-label="天气图标"/>
 
 				{/* 当前时间 */}
-				<p className="text-xs flex-none">
+				<p className="text-sm flex-none">
 					<span>{formatTime()}</span> / <span>{formatTime(new Date(now?.obsTime))}</span>
 				</p>
 			</div>
