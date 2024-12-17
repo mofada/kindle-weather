@@ -30,8 +30,8 @@ export function WeatherNow({now}: { now: INow }) {
 				<h1 className="text-[42px]" aria-label="城市名称">{cityName}</h1>
 
 				{/* 温度显示 */}
-				<div className="text-[100px] leading-[100px]">
-					<span>{now?.temp}</span>
+				<div >
+					<span className="text-[100px] leading-[100px] font-bold">{now?.temp}</span>
 					<span className="text-[50px]">℃</span>
 				</div>
 
