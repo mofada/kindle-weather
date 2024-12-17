@@ -15,11 +15,11 @@ export function WeatherNow({now}: { now: INow }) {
 		<header className="min-h-0 flex-[3] flex border-b-4 border-b-black"
 		        aria-label="当前天气信息">
 			{/* 左侧时间显示 */}
-			<div className="flex flex-col p-4">
-				<i className={`qi-${now?.icon} h-full text-[200px]`} aria-label="天气图标"/>
+			<div className="flex flex-col p-4 gap-2">
+				<i className={`qi-${now?.icon} flex-1 text-[160px]`} aria-label="天气图标"/>
 
-				{/* 日出和日落时间 */}
-				<p className="text-xs">
+				{/* 当前时间 */}
+				<p className="text-xs flex-none">
 					<span>{formatTime()}</span> / <span>{formatTime(new Date(now?.obsTime))}</span>
 				</p>
 			</div>

@@ -16,22 +16,22 @@ export function Footer({today}: { today: IToday }) {
 			{/* 今日气温 */}
 			<div className="flex items-center">
 				<span className="ml-2">·</span>
-				<span>【{today.tempMin} ~ {today.tempMax} ℃】</span>
+				<span>【{today?.tempMin} ~ {today?.tempMax} ℃】</span>
 			</div>
 
 			{/* 月相图标 */}
-			<i className={`qi-${today.moonPhaseIcon} text-[16px] ml-auto mr-2`}
+			<i className={`qi-${today?.moonPhaseIcon} text-[16px] ml-auto mr-2`}
 			   aria-label="月相图标"/>
 
 			{/* 日出和日落时间 */}
 			<div className="flex items-center space-x-4">
 				<p>
 					<span>日出：</span>
-					<time dateTime={today.sunrise}>{today.sunrise}</time>
+					<time dateTime={today?.sunrise}>{today?.sunrise}</time>
 				</p>
 				<p>
 					<span>日落：</span>
-					<time dateTime={today.sunset}>{today.sunset}</time>
+					<time dateTime={today?.sunset}>{today?.sunset}</time>
 				</p>
 			</div>
 		</footer>

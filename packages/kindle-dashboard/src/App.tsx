@@ -18,15 +18,24 @@ function App() {
 			.then(data => {
 				setNow(data.now)
 			})
+			.catch(err => {
+				console.error(err)
+			})
 
 		weatherApi.future()
 			.then(data => {
-				setFuture(data.hourly.slice(0, 5))
+				setFuture(data.hourly?.slice(0, 5) ?? [])
+			})
+			.catch(err => {
+				console.error(err)
 			})
 
 		weatherApi.today()
 			.then(data => {
 				setToday(data.today)
+			})
+			.catch(err => {
+				console.error(err)
 			})
 	}, [])
 
@@ -37,7 +46,8 @@ function App() {
 			<WeatherNow now={now}/>
 
 			{/* 未来天气预报区域 */}
-			<section className="flex-[3] lg:flex-[2] min-h-0 grid grid-cols-5 border-b border-b-black">
+			<section
+				className="flex-[3] lg:flex-[2] min-h-0 grid grid-cols-5 border-b border-b-black">
 				{
 					future.map((hourly, index) => {
 						return <FutureWeatherCard key={index} hourly={hourly}/>

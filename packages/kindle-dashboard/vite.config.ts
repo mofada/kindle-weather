@@ -13,6 +13,7 @@ export default defineConfig({
 		}
 	},
 	build: {
+		outDir: '../kindle-server/weather',
 		rollupOptions: {
 			output: {
 				entryFileNames: '[name].js',
