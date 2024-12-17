@@ -41,7 +41,7 @@ function App() {
 
 	return (
 		<main
-			className="flex flex-col font-lxgw-wenkai overflow-hidden rotate-90 origin-bottom-left w-[100vh] h-[100vw] absolute -top-[100vw] lg:w-screen lg:h-screen lg:rotate-0 lg:relative lg:top-0">
+			className="flex flex-col overflow-hidden rotate-90 origin-bottom-left w-[100vh] h-[100vw] absolute -top-[100vw] lg:w-screen lg:h-screen lg:rotate-0 lg:relative lg:top-0">
 			{/* 当前天气信息 */}
 			<WeatherNow now={now}/>
 
