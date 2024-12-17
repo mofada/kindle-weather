@@ -14,7 +14,7 @@ export function Footer({today}: { today: IToday }) {
 			</div>
 
 			{/* 今日气温 */}
-			<div className="flex items-center font-cabin-sketch">
+			<div className="flex items-center">
 				<span className="ml-2">·</span>
 				<span>【{today?.tempMin} ~ {today?.tempMax} ℃】</span>
 			</div>
