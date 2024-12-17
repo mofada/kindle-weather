@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         'cabin-sketch': ['Cabin Sketch', 'sans-serif'],
+        'lxgw-wenkai': ['LXGWWenKaiTC', 'sans-serif'],
       },
     },
   },

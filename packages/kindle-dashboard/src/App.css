@@ -13,3 +13,11 @@
     font-display: swap;
     src: url("assets/font/Cabin_Sketch/CabinSketch-Bold.ttf") format('truetype');
 }
+
+@font-face {
+    font-family: 'LXGWWenKaiTC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("assets/font/LXGW_WenKai/LXGWWenKaiTC-Regular.ttf") format('truetype');
+}
