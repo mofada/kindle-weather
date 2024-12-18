@@ -1,5 +1,8 @@
 #!/bin/bash
+# * * * * * /var/local/weather/update.sh
 # 每分钟运行一次，更新屏幕，防止误触
+
+cd /var/local/weather || exit 1
 
 # 获取电池电量
 batteryLevel=$(gasgauge-info -s)

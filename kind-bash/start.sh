@@ -1,5 +1,9 @@
 #!/bin/bash
-# 每五分钟运行一次，接口请求次数有限
+# */3 * * * * /var/local/weather/start.sh
+# 每三分钟运行一次，接口请求次数有限
+
+# 设置工作目录为 /var/local/weather
+cd /var/local/weather || exit 1
 
 # 替换你的key和location和city
 API_KEY="API_KEY"
