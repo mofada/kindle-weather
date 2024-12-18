@@ -8,8 +8,8 @@ export function FutureWeatherCard({hourly}: { hourly: IHourlyForecast }) {
 		<article
 			className="flex flex-col p-4 items-center justify-center border-r border-black last:border-none">
 			{/* 时间 */}
-			<time dateTime="11:00"
-			      className="text-[20px]">{formatTime(new Date(hourly.fxTime))}</time>
+			<time dateTime={hourly.fxTime}
+			      className="text-xl">{formatTime(new Date(hourly.fxTime))}</time>
 
 			{/* 天气图标 */}
 			<i className={`qi-${hourly.icon} text-[80px]`} aria-label="天气图标"/>
@@ -20,7 +20,7 @@ export function FutureWeatherCard({hourly}: { hourly: IHourlyForecast }) {
 			</p>
 
 			{/* 天气描述 */}
-			<p className="text-[24px]">{hourly.text}</p>
+			<p className="text-2xl">{hourly.text}</p>
 		</article>
 	);
 }

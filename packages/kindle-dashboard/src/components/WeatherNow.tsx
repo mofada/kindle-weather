@@ -27,7 +27,7 @@ export function WeatherNow({now}: { now: INow }) {
 
 			{/* 右侧天气信息 */}
 			<div className="flex flex-col p-4 ml-auto items-end justify-between">
-				<h1 className="text-[42px]" aria-label="城市名称">{cityName}</h1>
+				<h1 className="text-5xl" aria-label="城市名称">{cityName}</h1>
 
 				{/* 温度显示 */}
 				<p className="text-9xl font-bold font-cabin-sketch">
@@ -35,7 +35,7 @@ export function WeatherNow({now}: { now: INow }) {
 				</p>
 
 				{/* 天气描述 */}
-				<p className="text-[30px]">{now?.text}</p>
+				<p className="text-3xl">{now?.text}</p>
 			</div>
 		</header>
 	);

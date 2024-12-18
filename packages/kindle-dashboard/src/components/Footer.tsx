@@ -20,7 +20,7 @@ export function Footer({today}: { today: IToday }) {
 			</div>
 
 			{/* 月相图标 */}
-			<i className={`qi-${today?.moonPhaseIcon} text-[16px] ml-auto mr-2`}
+			<i className={`qi-${today?.moonPhaseIcon} ml-auto mr-2`}
 			   aria-label="月相图标"/>
 
 			{/* 日出和日落时间 */}
